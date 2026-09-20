@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AuthVault - Secure registration, password strength validation, generic error handling, and session authentication." />
+  <title>AuthVault — Sign In & Register | OIBSIP Level 2</title>
+
+  <!-- Google Font: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="auth-page">
+    <div class="auth-container">
+      <!-- Brand Header -->
+      <div class="auth-brand">
+        <div class="brand-badge">
+          <span class="lock-icon">🔒</span>
+          <span>AuthVault</span>
+        </div>
+        <h1 class="auth-title" id="formHeaderTitle">Welcome back</h1>
+        <p class="auth-subtitle" id="formHeaderSubtitle">Sign in with your credentials to access your protected dashboard.</p>
+      </div>
+
+      <!-- Security / Alert Notification Banner -->
+      <div class="alert-box" id="authAlert" role="alert" aria-live="assertive" hidden>
+        <span class="alert-icon" id="alertIcon">⚠️</span>
+        <span class="alert-text" id="alertText">Notification message</span>
+      </div>
+
+      <!-- Tab Switcher (Sign In vs Register) -->
+      <div class="tab-switcher" role="tablist">
+        <button type="button" class="tab-btn active" id="tabSignIn" role="tab" aria-selected="true" aria-controls="signInForm">
+          Sign In
+        </button>
+        <button type="button" class="tab-btn" id="tabRegister" role="tab" aria-selected="false" aria-controls="registerForm">
+          Create Account
+        </button>
+      </div>
+
+      <!-- Form 1: Sign In -->
+      <form id="signInForm" class="auth-form active" novalidate>
+        <div class="form-group">
+          <label for="loginEmail" class="form-label">Email Address</label>
+          <input 
+            type="email" 
+            id="loginEmail" 
+            class="form-input" 
+            placeholder="user@example.com" 
+            autocomplete="email" 
+            required 
+          />
+        </div>
+
+        <div class="form-group">
+          <div class="label-row">
+            <label for="loginPassword" class="form-label">Password</label>
+            <button type="button" class="btn-toggle-pwd" data-target="loginPassword" aria-label="Toggle password visibility">Show</button>
+          </div>
+          <input 
+            type="password" 
+            id="loginPassword" 
+            class="form-input" 
+            placeholder="Enter your password" 
+            autocomplete="current-password" 
+            required 
+          />
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" id="loginSubmitBtn">
+          Sign In
+        </button>
+
+        <div class="demo-credentials-box">
+          <span class="demo-tag">Preloaded Demo User</span>
+          <code>user@example.com</code> / <code>Password123</code>
+        </div>
+      </form>
+
+      <!-- Form 2: Register -->
+      <form id="registerForm" class="auth-form" novalidate hidden>
+        <div class="form-group">
+          <label for="regName" class="form-label">Full Name</label>
+          <input 
+            type="text" 
+            id="regName" 
+            class="form-input" 
+            placeholder="e.g. Abhishek Sharma" 
+            autocomplete="name" 
+            required 
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="regEmail" class="form-label">Email Address</label>
+          <input 
+            type="email" 
+            id="regEmail" 
+            class="form-input" 
+            placeholder="name@example.com" 
+            autocomplete="email" 
+            required 
+          />
+        </div>
+
+        <div class="form-group">
+          <div class="label-row">
+            <label for="regPassword" class="form-label">Create Password</label>
+            <button type="button" class="btn-toggle-pwd" data-target="regPassword" aria-label="Toggle password visibility">Show</button>
+          </div>
+          <input 
+            type="password" 
+            id="regPassword" 
+            class="form-input" 
+            placeholder="Minimum 8 chars + 1 number" 
+            autocomplete="new-password" 
+            required 
+          />
+          
+          <!-- Password Strength Indicator -->
+          <div class="strength-meter-wrap" id="strengthMeterWrap">
+            <div class="strength-bar"><div class="strength-fill" id="strengthFill"></div></div>
+            <span class="strength-label" id="strengthLabel">Enter password</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="regPasswordConfirm" class="form-label">Confirm Password</label>
+          <input 
+            type="password" 
+            id="regPasswordConfirm" 
+            class="form-input" 
+            placeholder="Re-enter password" 
+            autocomplete="new-password" 
+            required 
+          />
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" id="registerSubmitBtn">
+          Create Free Account
+        </button>
+      </form>
+
+      <!-- Security Notice -->
+      <div class="auth-security-footer">
+        <p>🔒 Generic error reporting enabled &bull; User enumeration protected &bull; Session guards active</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Nova - Modern developer workspace and deployment platform. Ship high-performance software with confidence." />
+  <title>Nova — Build your next big thing</title>
+  
+  <!-- Inter Font Family -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Header / Sticky Navigation -->
+  <header class="site-header" id="navbar">
+    <div class="container nav-container">
+      <a href="#hero" class="brand-logo" aria-label="Nova Home">
+        <span class="logo-mark"></span>
+        <span class="logo-text">NOVA</span>
+      </a>
+
+      <!-- Mobile Hamburger Toggle -->
+      <input type="checkbox" id="nav-toggle" class="nav-toggle-input" aria-label="Toggle navigation menu" />
+      <label for="nav-toggle" class="nav-toggle-label" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <!-- Navigation Links -->
+      <nav class="nav-menu" aria-label="Primary navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#features" class="nav-link">Features</a></li>
+          <li class="nav-item"><a href="#metrics" class="nav-link">Metrics</a></li>
+          <li class="nav-item"><a href="#workflow" class="nav-link">Workflow</a></li>
+          <li class="nav-item"><a href="#pricing" class="nav-link">Pricing</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="#pricing" class="btn btn-secondary btn-sm">Sign In</a>
+          <a href="#pricing" class="btn btn-primary btn-sm">Get Started</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="hero-pill">
+            <span class="pill-badge">v2.4 Released</span>
+            <span class="pill-text">Zero-latency Edge Runtime is now live &rarr;</span>
+          </div>
+
+          <h1 class="hero-title">
+            Build your next <span class="gradient-text">big thing</span>.
+          </h1>
+
+          <p class="hero-subtitle">
+            A minimal, robust cloud platform designed for modern engineering teams. 
+            Automate builds, scale distributed workloads, and ship resilient user experiences without infrastructure friction.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#pricing" class="btn btn-primary btn-lg">Get Started Free</a>
+            <a href="#features" class="btn btn-outline btn-lg">Explore Platform</a>
+          </div>
+
+          <div class="hero-trust">
+            <p class="trust-caption">Powering next-generation teams worldwide</p>
+            <div class="trust-logos">
+              <span class="trust-item">ACME CORP</span>
+              <span class="trust-item">POLARIS</span>
+              <span class="trust-item">HYPERION</span>
+              <span class="trust-item">VERITAS</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-preview" aria-hidden="true">
+          <div class="terminal-mockup">
+            <div class="terminal-header">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+              <span class="terminal-title">nova-deploy.sh — 80x24</span>
+            </div>
+            <div class="terminal-body">
+              <p><span class="term-dim">$</span> nova init --template microservice</p>
+              <p class="term-success">✔ Created workspace layout in 184ms</p>
+              <p><span class="term-dim">$</span> nova deploy --env production</p>
+              <p class="term-info">ℹ Packaging containers and verifying checksums...</p>
+              <p class="term-success">✔ Global edge distribution deployed (24 regions)</p>
+              <p class="term-accent">🚀 Live at https://nova.run/production-app</p>
+              <div class="term-metric-row">
+                <div class="metric-pill">P99: 14ms</div>
+                <div class="metric-pill">Status: Healthy</div>
+                <div class="metric-pill">SSL: Active</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Core Capabilities</span>
+          <h2 class="section-title">Engineered for clarity and sustained velocity</h2>
+          <p class="section-subtitle">
+            Say goodbye to fragile configuration files. Nova abstracts infrastructure complexities so you can focus strictly on customer value.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <!-- Card 1 -->
+          <article class="feature-card">
+            <div class="feature-icon-wrapper icon-indigo">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+            </div>
+            <h3 class="feature-name">Sub-Millisecond Edge Delivery</h3>
+            <p class="feature-desc">
+              Automatic asset caching and dynamic compute routing across 200+ global edge nodes. Deliver instant response times anywhere on Earth.
+            </p>
+            <div class="feature-meta">
+              <span class="feature-tag">Global CDN</span>
+              <span class="feature-tag">HTTP/3 Ready</span>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="feature-card">
+            <div class="feature-icon-wrapper icon-cyan">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+            </div>
+            <h3 class="feature-name">Autonomous CI/CD Pipelines</h3>
+            <p class="feature-desc">
+              Every Git branch generates an isolated, previewable preview environment with live logs, security scanning, and instant rollbacks.
+            </p>
+            <div class="feature-meta">
+              <span class="feature-tag">Zero Config</span>
+              <span class="feature-tag">Git Native</span>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="feature-card">
+            <div class="feature-icon-wrapper icon-purple">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <h3 class="feature-name">Enterprise Guardrails & SOC2</h3>
+            <p class="feature-desc">
+              End-to-end payload encryption, fine-grained role-based access control (RBAC), and automated secrets rotation out of the box.
+            </p>
+            <div class="feature-meta">
+              <span class="feature-tag">SOC2 Type II</span>
+              <span class="feature-tag">Audit Logs</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Metrics / Social Proof Section -->
+    <section class="metrics-section" id="metrics">
+      <div class="container">
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-number">99.99%</div>
+            <div class="metric-label">Guaranteed SLA Uptime</div>
+            <p class="metric-caption">Engineered with multi-cloud automated failover.</p>
+          </div>
+          <div class="metric-card">
+            <div class="metric-number">&lt; 25ms</div>
+            <div class="metric-label">Median Global Latency</div>
+            <p class="metric-caption">Optimized edge compute closer to your end users.</p>
+          </div>
+          <div class="metric-card">
+            <div class="metric-number">120M+</div>
+            <div class="metric-label">Requests Processed Daily</div>
+            <p class="metric-caption">Tested at scale under demanding real-world workloads.</p>
+          </div>
+          <div class="metric-card">
+            <div class="metric-number">14.2k</div>
+            <div class="metric-label">Production Deployments</div>
+            <p class="metric-caption">Trusted by high-growth startups and established teams.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Workflow / Content Section 2 -->
+    <section class="workflow-section" id="workflow">
+      <div class="container">
+        <div class="workflow-wrapper">
+          <div class="workflow-text">
+            <span class="section-eyebrow">Seamless Flow</span>
+            <h2 class="section-title">From `git push` to global production in seconds</h2>
+            <p class="section-subtitle">
+              Eliminate coordination overhead. Connect your repository once and let Nova handle runtime containers, DNS mapping, SSL renewals, and automated metrics tracking.
+            </p>
+            <ul class="workflow-steps">
+              <li class="workflow-step">
+                <div class="step-badge">1</div>
+                <div>
+                  <h4 class="step-title">Connect Repository</h4>
+                  <p class="step-desc">Integrate GitHub or GitLab with single-click OAuth authorization.</p>
+                </div>
+              </li>
+              <li class="workflow-step">
+                <div class="step-badge">2</div>
+                <div>
+                  <h4 class="step-title">Automatic Build Detection</h4>
+                  <p class="step-desc">Intelligent framework detection configures dependencies and asset caching.</p>
+                </div>
+              </li>
+              <li class="workflow-step">
+                <div class="step-badge">3</div>
+                <div>
+                  <h4 class="step-title">Instant Global Rollout</h4>
+                  <p class="step-desc">Your deployment goes live with zero downtime and instant telemetry.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="workflow-visual">
+            <div class="stats-panel">
+              <div class="panel-header">
+                <span class="panel-tag">Live Pipeline Status</span>
+                <span class="panel-status-active">Active</span>
+              </div>
+              <div class="panel-body">
+                <div class="pipeline-item success">
+                  <span class="pip-icon">✔</span>
+                  <div class="pip-details">
+                    <strong>Lint & Unit Tests</strong>
+                    <span>1,420 tests passed in 18s</span>
+                  </div>
+                </div>
+                <div class="pipeline-item success">
+                  <span class="pip-icon">✔</span>
+                  <div class="pip-details">
+                    <strong>Docker Layer Compression</strong>
+                    <span>Bundle reduced to 42MB</span>
+                  </div>
+                </div>
+                <div class="pipeline-item active">
+                  <span class="pip-icon">●</span>
+                  <div class="pip-details">
+                    <strong>Global Edge Replication</strong>
+                    <span>Deploying to us-east, eu-west, ap-south...</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing / Conversion Section -->
+    <section class="pricing-section" id="pricing">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Fair & Transparent</span>
+          <h2 class="section-title">Choose the plan that fits your growth</h2>
+          <p class="section-subtitle">No hidden charges. Start building for free and scale as your user base expands.</p>
+        </div>
+
+        <div class="pricing-grid">
+          <!-- Starter -->
+          <div class="pricing-card">
+            <h3 class="plan-name">Developer</h3>
+            <p class="plan-desc">For side projects, experiments, and personal sites.</p>
+            <div class="plan-price"><span class="currency">$</span>0<span class="period">/month</span></div>
+            <ul class="plan-features">
+              <li>✔ Unlimited static deployments</li>
+              <li>✔ 100 GB Global bandwidth</li>
+              <li>✔ Automated HTTPS / SSL</li>
+              <li>✔ Community support</li>
+            </ul>
+            <a href="#hero" class="btn btn-outline btn-block">Get Started</a>
+          </div>
+
+          <!-- Pro (Featured) -->
+          <div class="pricing-card featured">
+            <div class="featured-badge">Most Popular</div>
+            <h3 class="plan-name">Pro Team</h3>
+            <p class="plan-desc">For growing startups and production web products.</p>
+            <div class="plan-price"><span class="currency">$</span>29<span class="period">/month</span></div>
+            <ul class="plan-features">
+              <li>✔ Everything in Developer</li>
+              <li>✔ 1 TB Edge bandwidth</li>
+              <li>✔ Custom domains & SLA 99.99%</li>
+              <li>✔ Isolated preview environments</li>
+              <li>✔ Priority 24/7 engineering support</li>
+            </ul>
+            <a href="#hero" class="btn btn-primary btn-block">Start 14-Day Trial</a>
+          </div>
+
+          <!-- Enterprise -->
+          <div class="pricing-card">
+            <h3 class="plan-name">Enterprise</h3>
+            <p class="plan-desc">Dedicated infrastructure with custom compliance needs.</p>
+            <div class="plan-price"><span class="currency">$</span>149<span class="period">/month</span></div>
+            <ul class="plan-features">
+              <li>✔ Dedicated VPC deployment</li>
+              <li>✔ SOC2 & HIPAA compliance</li>
+              <li>✔ Custom SSO / SAML integration</li>
+              <li>✔ Dedicated technical account lead</li>
+            </ul>
+            <a href="#hero" class="btn btn-outline btn-block">Contact Sales</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <div class="brand-logo">
+          <span class="logo-mark"></span>
+          <span class="logo-text">NOVA</span>
+        </div>
+        <p class="footer-tagline">
+          Empowering builders to deploy robust, high-performance web applications with confidence.
+        </p>
+        <p class="footer-copyright">&copy; 2026 Nova Cloud Inc. Built for OIBSIP Web Development.</p>
+      </div>
+
+      <div class="footer-links-group">
+        <h4 class="footer-heading">Product</h4>
+        <ul class="footer-links">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#metrics">Edge Network</a></li>
+          <li><a href="#workflow">Pipelines</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-group">
+        <h4 class="footer-heading">Resources</h4>
+        <ul class="footer-links">
+          <li><a href="#hero">Documentation</a></li>
+          <li><a href="#hero">API Reference</a></li>
+          <li><a href="#hero">Status Page</a></li>
+          <li><a href="#hero">Security Whitepaper</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-group">
+        <h4 class="footer-heading">Connect</h4>
+        <ul class="footer-links">
+          <li><a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter / X</a></li>
+          <li><a href="#hero">Discord Community</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

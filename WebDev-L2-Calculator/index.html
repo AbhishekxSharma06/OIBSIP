@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Precision browser calculator with state-machine evaluation, zero-eval execution, and division-by-zero protection." />
+  <title>Calculator — OIBSIP Level 2</title>
+
+  <!-- Google Font: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="calculator-app">
+    <header class="app-header">
+      <span class="badge">OIBSIP Level 2 Task 1</span>
+      <h1 class="app-title">Precision Calculator</h1>
+      <p class="app-desc">Safe state-machine math engine without `eval()`, supporting chaining and keyboard navigation.</p>
+    </header>
+
+    <main class="calculator-card" role="region" aria-label="Calculator Interface">
+      <!-- Calculator Display Screen -->
+      <div class="calc-screen" aria-live="polite">
+        <div class="screen-history" id="screenHistory" aria-label="Expression history"></div>
+        <div class="screen-primary" id="screenPrimary" aria-label="Current result or input">0</div>
+      </div>
+
+      <!-- Keypad Grid -->
+      <div class="calc-keypad" id="keypad">
+        <!-- Row 1: Utility / Clear Keys -->
+        <button type="button" class="key key-func" data-action="clear" aria-label="All Clear">AC</button>
+        <button type="button" class="key key-func" data-action="delete" aria-label="Backspace or delete last digit">DEL</button>
+        <button type="button" class="key key-func" data-action="percent" aria-label="Percent">%</button>
+        <button type="button" class="key key-operator" data-action="operator" data-value="/" aria-label="Divide">&divide;</button>
+
+        <!-- Row 2: 7, 8, 9, Multiply -->
+        <button type="button" class="key key-num" data-action="digit" data-value="7">7</button>
+        <button type="button" class="key key-num" data-action="digit" data-value="8">8</button>
+        <button type="button" class="key key-num" data-action="digit" data-value="9">9</button>
+        <button type="button" class="key key-operator" data-action="operator" data-value="*" aria-label="Multiply">&times;</button>
+
+        <!-- Row 3: 4, 5, 6, Subtract -->
+        <button type="button" class="key key-num" data-action="digit" data-value="4">4</button>
+        <button type="button" class="key key-num" data-action="digit" data-value="5">5</button>
+        <button type="button" class="key key-num" data-action="digit" data-value="6">6</button>
+        <button type="button" class="key key-operator" data-action="operator" data-value="-" aria-label="Subtract">&minus;</button>
+
+        <!-- Row 4: 1, 2, 3, Add -->
+        <button type="button" class="key key-num" data-action="digit" data-value="1">1</button>
+        <button type="button" class="key key-num" data-action="digit" data-value="2">2</button>
+        <button type="button" class="key key-num" data-action="digit" data-value="3">3</button>
+        <button type="button" class="key key-operator" data-action="operator" data-value="+" aria-label="Add">&#43;</button>
+
+        <!-- Row 5: Negate, 0, Decimal, Equals -->
+        <button type="button" class="key key-func" data-action="negate" aria-label="Toggle positive negative">&plusmn;</button>
+        <button type="button" class="key key-num" data-action="digit" data-value="0">0</button>
+        <button type="button" class="key key-num" data-action="decimal" aria-label="Decimal point">.</button>
+        <button type="button" class="key key-equals" data-action="calculate" aria-label="Equals result">&#61;</button>
+      </div>
+
+      <!-- Keyboard shortcuts legend -->
+      <div class="calc-legend">
+        <span>Keyboard: NumKeys (0-9) &bull; Enter (=) &bull; Backspace (DEL) &bull; Esc (AC)</span>
+      </div>
+    </main>
+
+    <footer class="calculator-footer">
+      <p>&copy; 2026 OIBSIP Submission &bull; State-Machine Engine &bull; Zero eval()</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

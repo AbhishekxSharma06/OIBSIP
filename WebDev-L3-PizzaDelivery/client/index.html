@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="PizzaLab - Artisanal Custom Pizza Builder, Razorpay Test Checkout, Real-time Order Tracking, and Admin Inventory Console." />
+  <title>PizzaLab — Craft Your Pizza & Live Tracking</title>
+
+  <!-- Google Font: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header class="app-header">
+    <div class="container nav-wrap">
+      <div class="nav-brand" id="brandLogo">
+        <span class="pizza-icon">🍕</span>
+        <span class="brand-title">PIZZA LAB</span>
+      </div>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <button type="button" class="nav-btn active" data-view="builder">Build Pizza</button>
+        <button type="button" class="nav-btn" data-view="cart">
+          Cart <span class="cart-pill" id="cartCountBadge">0</span>
+        </button>
+        <button type="button" class="nav-btn" data-view="tracking" id="navTrackingBtn">Track Order</button>
+        <button type="button" class="nav-btn" data-view="admin" id="navAdminBtn">Admin Console</button>
+      </nav>
+
+      <div class="nav-auth">
+        <div class="user-pill" id="userPill" hidden>
+          <span class="role-tag" id="userRoleBadge">Customer</span>
+          <span class="user-email" id="userDisplayEmail">user@example.com</span>
+          <button type="button" class="btn-logout" id="logoutBtn" title="Log out">Sign Out</button>
+        </div>
+        <button type="button" class="btn btn-sm btn-primary" id="openAuthModalBtn">Sign In</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Notification Banner -->
+  <div class="container">
+    <div class="toast-banner" id="toastBanner" role="status" aria-live="polite" hidden>
+      <span id="toastMessage">Notification message</span>
+    </div>
+  </div>
+
+  <main class="container main-content">
+    <!-- ======================================================================
+         VIEW 1: PIZZA BUILDER (PRD Page 27, 30)
+         ====================================================================== -->
+    <section class="view-section active" id="builderView">
+      <div class="section-title-wrap">
+        <span class="eyebrow">Interactive Kitchen</span>
+        <h1 class="page-title">Build Your Custom Pizza</h1>
+        <p class="page-desc">Select your handcrafted crust, sauce, cheeses, and garden-fresh toppings. Watch your pizza come to life.</p>
+      </div>
+
+      <!-- Stepper Header -->
+      <div class="builder-stepper">
+        <div class="step-node active" data-step="1">
+          <span class="step-num">1</span>
+          <span class="step-text">Crust Base</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-node" data-step="2">
+          <span class="step-num">2</span>
+          <span class="step-text">Signature Sauce</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-node" data-step="3">
+          <span class="step-num">3</span>
+          <span class="step-text">Cheese Blend</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-node" data-step="4">
+          <span class="step-num">4</span>
+          <span class="step-text">Veggies & Toppings</span>
+        </div>
+      </div>
+
+      <!-- Builder Layout: Options Grid (Left) + Live Sticky Pizza Preview (Right) -->
+      <div class="builder-layout">
+        <!-- Left: Step Options Panels -->
+        <div class="builder-controls">
+          <!-- Step 1: Base -->
+          <div class="step-panel active" id="stepPanel1">
+            <div class="panel-intro">
+              <h2 class="panel-heading">Step 1: Choose Your Crust Base (5 Options)</h2>
+              <p class="panel-sub">Select 1 foundation for your pizza.</p>
+            </div>
+            <div class="option-grid" id="baseOptionsGrid">
+              <!-- Dynamically populated from API -->
+              <div class="skeleton-card">Loading bases...</div>
+            </div>
+            <div class="step-nav-actions">
+              <button type="button" class="btn btn-primary" onclick="goToStep(2)">Next: Sauce &rarr;</button>
+            </div>
+          </div>
+
+          <!-- Step 2: Sauce -->
+          <div class="step-panel" id="stepPanel2" hidden>
+            <div class="panel-intro">
+              <h2 class="panel-heading">Step 2: Choose Your Sauce (5 Options)</h2>
+              <p class="panel-sub">Select 1 sauce flavor base.</p>
+            </div>
+            <div class="option-grid" id="sauceOptionsGrid">
+              <!-- Dynamically populated from API -->
+            </div>
+            <div class="step-nav-actions">
+              <button type="button" class="btn btn-secondary" onclick="goToStep(1)">&larr; Back to Crust</button>
+              <button type="button" class="btn btn-primary" onclick="goToStep(3)">Next: Cheese &rarr;</button>
+            </div>
+          </div>
+
+          <!-- Step 3: Cheese -->
+          <div class="step-panel" id="stepPanel3" hidden>
+            <div class="panel-intro">
+              <h2 class="panel-heading">Step 3: Choose Your Cheese (5 Options)</h2>
+              <p class="panel-sub">Select 1 artisan cheese layer.</p>
+            </div>
+            <div class="option-grid" id="cheeseOptionsGrid">
+              <!-- Dynamically populated from API -->
+            </div>
+            <div class="step-nav-actions">
+              <button type="button" class="btn btn-secondary" onclick="goToStep(2)">&larr; Back to Sauce</button>
+              <button type="button" class="btn btn-primary" onclick="goToStep(4)">Next: Toppings &rarr;</button>
+            </div>
+          </div>
+
+          <!-- Step 4: Veggies -->
+          <div class="step-panel" id="stepPanel4" hidden>
+            <div class="panel-intro">
+              <h2 class="panel-heading">Step 4: Fresh Toppings & Veggies</h2>
+              <p class="panel-sub">Pick as many delicious toppings as you like.</p>
+            </div>
+            <div class="option-grid" id="veggieOptionsGrid">
+              <!-- Dynamically populated from API -->
+            </div>
+            <div class="step-nav-actions">
+              <button type="button" class="btn btn-secondary" onclick="goToStep(3)">&larr; Back to Cheese</button>
+              <button type="button" class="btn btn-primary" id="addCustomPizzaBtn">
+                Add to Order Cart &rarr;
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Sticky Pizza Visual & Live Calculator -->
+        <aside class="builder-preview-col">
+          <div class="sticky-preview-card">
+            <h3 class="preview-title">Live Pizza Preview</h3>
+            
+            <!-- Graphic Representation -->
+            <div class="pizza-canvas" id="pizzaCanvas">
+              <div class="crust-layer" id="visCrust">
+                <div class="sauce-layer" id="visSauce">
+                  <div class="cheese-layer" id="visCheese">
+                    <div class="toppings-layer" id="visToppings"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Selected Recipe Summary -->
+            <div class="recipe-summary">
+              <div class="recipe-row">
+                <span class="recipe-label">Crust:</span>
+                <strong class="recipe-val" id="summaryBase">Thin Crust</strong>
+                <span class="recipe-price" id="summaryBasePrice">₹120</span>
+              </div>
+              <div class="recipe-row">
+                <span class="recipe-label">Sauce:</span>
+                <strong class="recipe-val" id="summarySauce">Classic Marinara</strong>
+                <span class="recipe-price" id="summarySaucePrice">₹40</span>
+              </div>
+              <div class="recipe-row">
+                <span class="recipe-label">Cheese:</span>
+                <strong class="recipe-val" id="summaryCheese">Classic Mozzarella</strong>
+                <span class="recipe-price" id="summaryCheesePrice">₹70</span>
+              </div>
+              <div class="recipe-row">
+                <span class="recipe-label">Toppings:</span>
+                <strong class="recipe-val" id="summaryVeggies">None selected</strong>
+                <span class="recipe-price" id="summaryVegPrice">₹0</span>
+              </div>
+            </div>
+
+            <!-- Subtotal & CTA -->
+            <div class="preview-total-row">
+              <span class="total-label">Pizza Total:</span>
+              <span class="total-amount" id="previewTotalPrice">₹230</span>
+            </div>
+
+            <button type="button" class="btn btn-primary btn-block btn-lg" id="quickAddCartBtn">
+              Add This Pizza to Cart
+            </button>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         VIEW 2: CART & CHECKOUT (PRD Page 27, 30, 32)
+         ====================================================================== -->
+    <section class="view-section" id="cartView" hidden>
+      <div class="section-title-wrap">
+        <span class="eyebrow">Review Order</span>
+        <h1 class="page-title">Your Pizza Basket</h1>
+      </div>
+
+      <div class="cart-layout">
+        <!-- Cart Items List -->
+        <div class="cart-items-panel">
+          <div class="empty-cart" id="emptyCartMessage" hidden>
+            <div class="empty-icon">🛒</div>
+            <h3>Your cart is currently empty</h3>
+            <p>Go to the Pizza Builder to assemble your custom pizza!</p>
+            <button type="button" class="btn btn-primary" onclick="switchView('builder')">Build a Pizza</button>
+          </div>
+
+          <div class="cart-list" id="cartItemsList">
+            <!-- Dynamically populated cart items -->
+          </div>
+        </div>
+
+        <!-- Checkout & Summary Card -->
+        <div class="cart-summary-panel">
+          <div class="summary-card">
+            <h3 class="summary-title">Delivery & Checkout</h3>
+
+            <div class="form-group">
+              <label for="orderAddress" class="form-label">Delivery Address *</label>
+              <textarea 
+                id="orderAddress" 
+                class="form-textarea" 
+                rows="2" 
+                placeholder="Enter complete delivery street address, flat/floor, city"
+                required
+              >Flat 402, Green Park Avenue, New Delhi</textarea>
+            </div>
+
+            <div class="bill-breakdown">
+              <div class="bill-row">
+                <span>Items Subtotal:</span>
+                <strong id="billSubtotal">₹0</strong>
+              </div>
+              <div class="bill-row">
+                <span>Delivery Partner Fee:</span>
+                <span>₹40</span>
+              </div>
+              <div class="bill-row">
+                <span>GST Tax (5%):</span>
+                <span id="billTax">₹0</span>
+              </div>
+              <div class="bill-row bill-grand-total">
+                <strong>Grand Total:</strong>
+                <strong class="grand-price" id="billGrandTotal">₹0</strong>
+              </div>
+            </div>
+
+            <button type="button" class="btn btn-primary btn-block btn-lg" id="openCheckoutModalBtn">
+              Proceed to Razorpay Test Checkout
+            </button>
+
+            <div class="checkout-guarantee">
+              <span>🔒 256-bit Encrypted &bull; Razorpay Sandbox Verified</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         VIEW 3: REAL-TIME ORDER TRACKING (PRD Page 27, 30, 32)
+         ====================================================================== -->
+    <section class="view-section" id="trackingView" hidden>
+      <div class="section-title-wrap">
+        <div class="live-pulse-badge">
+          <span class="pulse-circle"></span>
+          <span id="trackingLiveBadge">Live Polling Synchronized (3s)</span>
+        </div>
+        <h1 class="page-title">Order Status & Live Kitchen Tracker</h1>
+        <p class="page-desc" id="trackingOrderSubtitle">Review progress updates from our kitchen straight to your doorstep.</p>
+      </div>
+
+      <div class="tracker-card">
+        <!-- Order Header -->
+        <div class="tracker-header">
+          <div>
+            <span class="tracker-label">Order Identifier</span>
+            <h2 class="tracker-id" id="trackerOrderId">ord_demo_101</h2>
+          </div>
+          <div class="tracker-badge-wrap">
+            <span class="order-status-badge" id="trackerStatusBadge">In Kitchen</span>
+          </div>
+        </div>
+
+        <!-- 4-Step Visual Progress Stepper -->
+        <div class="tracking-progress-bar">
+          <div class="track-step" id="stepOrderReceived">
+            <div class="track-icon-circle">📝</div>
+            <span class="track-step-title">Order Received</span>
+            <span class="track-step-time" id="timeOrderReceived">Just now</span>
+          </div>
+
+          <div class="track-connector" id="conn1"></div>
+
+          <div class="track-step" id="stepInKitchen">
+            <div class="track-icon-circle">👨‍🍳</div>
+            <span class="track-step-title">In Kitchen</span>
+            <span class="track-step-time" id="timeInKitchen">—</span>
+          </div>
+
+          <div class="track-connector" id="conn2"></div>
+
+          <div class="track-step" id="stepSentToDelivery">
+            <div class="track-icon-circle">🛵</div>
+            <span class="track-step-title">Sent to Delivery</span>
+            <span class="track-step-time" id="timeSentToDelivery">—</span>
+          </div>
+
+          <div class="track-connector" id="conn3"></div>
+
+          <div class="track-step" id="stepDelivered">
+            <div class="track-icon-circle">🍕</div>
+            <span class="track-step-title">Delivered</span>
+            <span class="track-step-time" id="timeDelivered">—</span>
+          </div>
+        </div>
+
+        <!-- Order Summary Details -->
+        <div class="tracker-details-grid">
+          <div class="detail-box">
+            <h4 class="detail-title">Customer Information</h4>
+            <p><strong id="trackCustomerName">Rohit Verma</strong></p>
+            <p id="trackCustomerEmail">customer@example.com</p>
+            <p class="detail-addr" id="trackCustomerAddr">Flat 402, Green Park Avenue, New Delhi</p>
+          </div>
+
+          <div class="detail-box">
+            <h4 class="detail-title">Payment & Total</h4>
+            <p>Method: <span class="badge-role">Razorpay Test Mode</span></p>
+            <p>Payment ID: <code id="trackPaymentId">pay_test_987456123</code></p>
+            <p>Total Paid: <strong class="text-primary" id="trackTotalPaid">₹360</strong></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         VIEW 4: ADMIN OPERATIONS CONSOLE (PRD Page 27, 31)
+         ====================================================================== -->
+    <section class="view-section" id="adminView" hidden>
+      <div class="section-title-wrap">
+        <span class="eyebrow">Privileged Operations</span>
+        <h1 class="page-title">Operations & Inventory Dashboard</h1>
+        <p class="page-desc">Manage active orders, trigger workflow states, configure threshold alerts, and perform inventory restocks.</p>
+      </div>
+
+      <!-- Quick Metrics Row -->
+      <div class="metrics-row">
+        <div class="metric-card">
+          <span class="metric-num" id="adminActiveOrdersCount">0</span>
+          <span class="metric-title">Active Orders</span>
+        </div>
+        <div class="metric-card alert-card">
+          <span class="metric-num text-error" id="adminLowStockCount">0</span>
+          <span class="metric-title">Low Stock Items</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-num text-success" id="adminTotalRevenue">₹0</span>
+          <span class="metric-title">Total Revenue</span>
+        </div>
+      </div>
+
+      <!-- Low Stock Alerts Notification Panel -->
+      <div class="admin-alert-banner" id="adminAlertBanner">
+        <h3 class="alert-banner-title">⚠️ Low Stock Critical Alerts</h3>
+        <div class="alert-chips-list" id="lowStockChipsList">
+          <!-- Low stock items dynamically listed -->
+        </div>
+      </div>
+
+      <!-- Two-Column Operations Layout: Active Orders Queue + Inventory Table -->
+      <div class="admin-layout">
+        <!-- Orders Queue -->
+        <div class="admin-orders-col">
+          <div class="panel-header-row">
+            <h3 class="panel-headline">Live Order Queue</h3>
+            <select id="adminStatusFilter" class="filter-select">
+              <option value="all">All Statuses</option>
+              <option value="Order Received">Order Received</option>
+              <option value="In Kitchen">In Kitchen</option>
+              <option value="Sent to Delivery">Sent to Delivery</option>
+              <option value="Delivered">Delivered</option>
+            </select>
+          </div>
+
+          <div class="orders-queue-list" id="adminOrdersQueue">
+            <!-- Dynamically populated orders -->
+          </div>
+        </div>
+
+        <!-- Inventory Control Panel -->
+        <div class="admin-inventory-col">
+          <div class="panel-header-row">
+            <h3 class="panel-headline">Stock & Inventory Controls</h3>
+            <button type="button" class="btn btn-sm btn-secondary" id="refreshInventoryBtn">↻ Refresh</button>
+          </div>
+
+          <div class="threshold-config-box">
+            <label for="globalThresholdInput" class="threshold-label">Global Low-Stock Threshold:</label>
+            <div class="threshold-inputs">
+              <input type="number" id="globalThresholdInput" class="threshold-input" value="20" min="1" max="100" />
+              <button type="button" class="btn btn-sm btn-primary" id="saveThresholdBtn">Save</button>
+            </div>
+          </div>
+
+          <div class="inventory-table-wrap">
+            <table class="inventory-table">
+              <thead>
+                <tr>
+                  <th>Item / Category</th>
+                  <th>Stock</th>
+                  <th>Threshold</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="inventoryTableBody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================================================================
+       MODAL 1: AUTHENTICATION DIALOG (Sign In / Register)
+       ====================================================================== -->
+  <dialog id="authModal" class="app-dialog">
+    <div class="dialog-content">
+      <div class="dialog-header">
+        <h3 class="dialog-title" id="authModalTitle">Sign In to PizzaLab</h3>
+        <button type="button" class="btn-close" id="closeAuthModalBtn">&times;</button>
+      </div>
+
+      <div class="auth-tabs">
+        <button type="button" class="auth-tab-btn active" id="tabCustomerSign">Customer Sign In</button>
+        <button type="button" class="auth-tab-btn" id="tabAdminSign">Admin Sign In</button>
+        <button type="button" class="auth-tab-btn" id="tabRegisterModal">New Account</button>
+      </div>
+
+      <form id="authModalForm" class="dialog-form" novalidate>
+        <div class="form-group" id="nameGroup" hidden>
+          <label for="authNameInput" class="form-label">Full Name</label>
+          <input type="text" id="authNameInput" class="form-input" placeholder="Your Name" />
+        </div>
+
+        <div class="form-group">
+          <label for="authEmailInput" class="form-label">Email Address</label>
+          <input type="email" id="authEmailInput" class="form-input" value="customer@example.com" required />
+        </div>
+
+        <div class="form-group">
+          <label for="authPasswordInput" class="form-label">Password</label>
+          <input type="password" id="authPasswordInput" class="form-input" value="Customer@12345" required />
+        </div>
+
+        <div class="auth-error-msg" id="authModalError" hidden></div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-lg" id="authSubmitBtn">
+          Sign In
+        </button>
+
+        <div class="modal-credentials-hint">
+          <strong>Demo Credentials:</strong><br />
+          Customer: <code>customer@example.com</code> / <code>Customer@12345</code><br />
+          Admin: <code>admin@pizzalab.com</code> / <code>Admin@12345</code>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- ======================================================================
+       MODAL 2: RAZORPAY TEST CHECKOUT (PRD Page 27, 32)
+       ====================================================================== -->
+  <dialog id="razorpayModal" class="razorpay-dialog">
+    <div class="rzp-frame">
+      <!-- Simulated Razorpay Header -->
+      <div class="rzp-header">
+        <div class="rzp-brand">
+          <span class="rzp-badge-test">TEST MODE</span>
+          <span class="rzp-merchant">PizzaLab Craft Foods</span>
+        </div>
+        <div class="rzp-amount">
+          <span class="rzp-currency">₹</span>
+          <span class="rzp-val" id="rzpAmountDisplay">0.00</span>
+        </div>
+      </div>
+
+      <div class="rzp-body">
+        <h4 class="rzp-section-title">Select Payment Method</h4>
+
+        <div class="rzp-methods">
+          <label class="rzp-method-option active">
+            <input type="radio" name="rzpMethod" value="upi" checked />
+            <span class="rzp-method-icon">📱</span>
+            <div>
+              <strong>UPI (Google Pay, PhonePe, Paytm)</strong>
+              <small>Instant zero-fee payment simulation</small>
+            </div>
+          </label>
+
+          <label class="rzp-method-option">
+            <input type="radio" name="rzpMethod" value="card" />
+            <span class="rzp-method-icon">💳</span>
+            <div>
+              <strong>Credit / Debit Card</strong>
+              <small>Visa, Mastercard, RuPay</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="rzp-action-row">
+          <button type="button" class="btn btn-secondary" id="cancelPaymentBtn">Cancel</button>
+          <button type="button" class="btn btn-primary" id="confirmPaymentBtn">
+            Pay ₹<span id="rzpPayBtnAmount">0</span> (Test)
+          </button>
+        </div>
+
+        <div class="rzp-footer-note">
+          Simulated Razorpay Test Gateway &bull; Conforms to OIBSIP Level 3 Spec
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

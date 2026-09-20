@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tribute to Dr. A.P.J. Abdul Kalam — Aerospace scientist, 11th President of India, and inspiration to millions." />
+  <title>Dr. A.P.J. Abdul Kalam — A Tribute</title>
+
+  <!-- Typography: Dual font styles (Lora for literary quotes/serif, Plus Jakarta Sans for body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Header / Hero Section (Dark Section Background #1) -->
+  <header class="tribute-hero" id="top">
+    <div class="container hero-container">
+      <div class="hero-badge">OIBSIP Level 2 Task 2 &bull; Tribute Page</div>
+      <h1 class="hero-title">Dr. A.P.J. Abdul Kalam</h1>
+      <p class="hero-tagline">1931 – 2015 &bull; The Missile Man of India & The People's President</p>
+
+      <div class="portrait-frame">
+        <!-- Prominent Portrait Illustration -->
+        <svg viewBox="0 0 200 200" class="portrait-svg" aria-label="Portrait illustration of Dr. A.P.J. Abdul Kalam">
+          <defs>
+            <linearGradient id="gradKalam" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#4f46e5" />
+              <stop offset="100%" stop-color="#06b6d4" />
+            </linearGradient>
+          </defs>
+          <circle cx="100" cy="100" r="96" fill="#1e293b" stroke="url(#gradKalam)" stroke-width="4" />
+          <!-- Head / Hair -->
+          <ellipse cx="100" cy="85" rx="36" ry="42" fill="#fde68a" />
+          <!-- Characteristic Silver Hair -->
+          <path d="M60 70 Q100 35 140 70 Q145 100 135 110 Q100 95 65 110 Z" fill="#cbd5e1" opacity="0.95" />
+          <!-- Eyeglasses -->
+          <circle cx="86" cy="86" r="10" fill="none" stroke="#475569" stroke-width="3" />
+          <circle cx="114" cy="86" r="10" fill="none" stroke="#475569" stroke-width="3" />
+          <path d="M96 86 L104 86" stroke="#475569" stroke-width="3" />
+          <!-- Warm Smile -->
+          <path d="M88 108 Q100 118 112 108" fill="none" stroke="#b45309" stroke-width="3" stroke-linecap="round" />
+          <!-- Suit Collar -->
+          <path d="M50 170 Q100 130 150 170 L150 196 L50 196 Z" fill="#334155" />
+          <path d="M90 145 L100 170 L110 145 Z" fill="#e2e8f0" />
+        </svg>
+        <figcaption class="portrait-caption">
+          Avul Pakir Jainulabdeen Abdul Kalam &bull; Scientist, Statesman, Teacher
+        </figcaption>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Tribute Body (Light Warm Section Background #2) -->
+  <main class="tribute-body">
+    <!-- Biography Overview Section -->
+    <section class="container bio-section">
+      <div class="section-label">Biography & Legacy</div>
+      <h2 class="section-heading">A Life Dedicated to Science, Youth, and the Nation</h2>
+
+      <div class="bio-text">
+        <p class="bio-paragraph">
+          Born on October 15, 1931, in the coastal pilgrimage town of Rameswaram, Tamil Nadu, Dr. Kalam came from humble beginnings. 
+          To support his family's household expenses, he distributed newspapers as a boy. Driven by an insatiable curiosity for flight and 
+          aerodynamics, he went on to earn a degree in aeronautical engineering from the Madras Institute of Technology.
+        </p>
+
+        <p class="bio-paragraph">
+          Dr. Kalam spent over four decades in public research, primarily at the Defence Research and Development Organisation (DRDO) and the 
+          Indian Space Research Organisation (ISRO). As Project Director, he spearheaded the development of India's first indigenous Satellite 
+          Launch Vehicle (SLV-III), which successfully placed the Rohini satellite into low Earth orbit in 1980.
+        </p>
+
+        <p class="bio-paragraph">
+          Widely revered as the "Missile Man of India," he played a seminal role in architecting the Integrated Guided Missile Development Programme 
+          (IGMDP), resulting in strategic defence assets including Agni and Prithvi. In 1998, he served as Chief Scientific Adviser during the 
+          Pokhran-II nuclear tests, cementing the country's national security foundation.
+        </p>
+
+        <p class="bio-paragraph">
+          Serving as the 11th President of India from 2002 to 2007, Kalam transformed the presidency into a vibrant institution accessible to ordinary citizens. 
+          Affectionately named "The People's President," he spent his post-presidential years visiting universities, engaging with over five million young students, 
+          and advocating passionately for education, technological self-reliance, and moral integrity.
+        </p>
+      </div>
+    </section>
+
+    <!-- Notable Quote Block (Stylized Serif Font Exploration) -->
+    <section class="quote-section">
+      <div class="container">
+        <blockquote class="quote-card">
+          <p class="quote-text">
+            &ldquo;Dream, dream, dream. Dreams transform into thoughts, and thoughts result in action. 
+            You have to dream before your dreams can come true.&rdquo;
+          </p>
+          <cite class="quote-author">&mdash; Dr. A.P.J. Abdul Kalam, <span class="quote-source">Wings of Fire: An Autobiography</span></cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- Interactive / Structured Milestone Timeline -->
+    <section class="container timeline-section">
+      <div class="section-label">Milestones</div>
+      <h2 class="section-heading">Key Chronology & Achievements</h2>
+
+      <div class="timeline-tree">
+        <!-- Item 1 -->
+        <div class="timeline-item">
+          <div class="timeline-marker">1931</div>
+          <div class="timeline-content">
+            <h3 class="milestone-title">Early Life in Rameswaram</h3>
+            <p class="milestone-desc">
+              Born to Jainulabdeen and Ashiamma in Rameswaram; demonstrated perseverance and dedication to academic excellence despite economic hardship.
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="timeline-item">
+          <div class="timeline-marker">1969</div>
+          <div class="timeline-content">
+            <h3 class="milestone-title">ISRO & SLV-III Project Directorship</h3>
+            <p class="milestone-desc">
+              Joined the Indian Space Research Organisation (ISRO) and led India's first indigenous satellite launch vehicle project to landmark success.
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="timeline-item">
+          <div class="timeline-marker">1982</div>
+          <div class="timeline-content">
+            <h3 class="milestone-title">Architect of the IGMDP</h3>
+            <p class="milestone-desc">
+              Directed the Integrated Guided Missile Development Programme, engineering key indigenous defense systems (Agni, Prithvi, Akash, Trishul).
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="timeline-item">
+          <div class="timeline-marker">1997</div>
+          <div class="timeline-content">
+            <h3 class="milestone-title">Bharat Ratna Conferred</h3>
+            <p class="milestone-desc">
+              Awarded India's highest civilian honor, the Bharat Ratna, for his invaluable contributions to scientific research and aerospace modernization.
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="timeline-item">
+          <div class="timeline-marker">2002</div>
+          <div class="timeline-content">
+            <h3 class="milestone-title">11th President of India</h3>
+            <p class="milestone-desc">
+              Elected as President with overwhelming cross-party support; championed 'India Vision 2020' to transform the nation into a developed society.
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 6 -->
+        <div class="timeline-item">
+          <div class="timeline-marker">2015</div>
+          <div class="timeline-content">
+            <h3 class="milestone-title">Eternal Legacy in Education</h3>
+            <p class="milestone-desc">
+              Passed away on July 27, 2015, while delivering a lecture to students at IIM Shillong, departing the world doing what he loved most: teaching.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- References & External Reading Section -->
+    <section class="container references-section">
+      <div class="references-card">
+        <h3 class="ref-title">Historical References & Further Reading</h3>
+        <ul class="ref-list">
+          <li>
+            <a href="https://en.wikipedia.org/wiki/A._P._J._Abdul_Kalam" target="_blank" rel="noopener noreferrer">
+              Wikipedia Biography &bull; A. P. J. Abdul Kalam
+            </a>
+          </li>
+          <li>
+            <a href="https://www.drabdulkalam.com" target="_blank" rel="noopener noreferrer">
+              Official Memorial Foundation & Publications Archive
+            </a>
+          </li>
+          <li>
+            <a href="https://presidentofindia.nic.in" target="_blank" rel="noopener noreferrer">
+              President of India Official Archive & Speeches
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="tribute-footer">
+    <div class="container">
+      <p>&copy; 2026 Tribute Project &bull; Prepared for OIBSIP Web Development Submission</p>
+      <p class="footer-small"><a href="#top">Back to top &uarr;</a></p>
+    </div>
+  </footer>
+</body>
+</html>

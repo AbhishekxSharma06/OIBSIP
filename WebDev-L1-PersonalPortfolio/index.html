@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Personal Portfolio of Abhishek Sharma — Full Stack Web Developer. Showcasing software projects, engineering skills, and web applications." />
+  <title>Abhishek Sharma — Full Stack Web Developer</title>
+
+  <!-- Google Font: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header class="header" id="navbar">
+    <div class="container nav-wrapper">
+      <a href="#hero" class="brand">
+        <span class="brand-avatar">AS</span>
+        <span class="brand-name">Abhishek Sharma</span>
+      </a>
+
+      <!-- Mobile Menu Button -->
+      <button class="mobile-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <!-- Nav Links -->
+      <nav class="nav-links" id="navLinks" aria-label="Main menu">
+        <a href="#about" class="nav-item">About</a>
+        <a href="#skills" class="nav-item">Skills</a>
+        <a href="#projects" class="nav-item">Projects</a>
+        <a href="#contact" class="nav-item nav-cta">Get in Touch</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <div class="status-indicator">
+            <span class="status-dot"></span>
+            Available for new projects & full-stack roles
+          </div>
+
+          <h1 class="hero-headline">
+            Hello, I build <span class="accent-text">clean, accessible</span> web experiences.
+          </h1>
+
+          <p class="hero-subtext">
+            I am a Full Stack Developer specializing in building high-performance modern web applications with semantic HTML5, clean CSS architectures, JavaScript, Node.js, and React.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#projects" class="btn btn-primary">View Case Studies</a>
+            <a href="#contact" class="btn btn-secondary">Contact Me</a>
+          </div>
+
+          <div class="hero-socials">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-badge" aria-label="GitHub Profile">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>GitHub</span>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-badge" aria-label="LinkedIn Profile">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              <span>LinkedIn</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="avatar-card">
+            <div class="avatar-circle">
+              <!-- Professional SVG Vector Portrait Representation -->
+              <svg viewBox="0 0 120 120" class="avatar-svg" aria-label="Developer avatar">
+                <circle cx="60" cy="60" r="58" fill="#e0e7ff" />
+                <!-- Head -->
+                <circle cx="60" cy="45" r="22" fill="#4f46e5" />
+                <!-- Torso -->
+                <path d="M25 105 C25 80, 40 70, 60 70 C80 70, 95 80, 95 105 Z" fill="#312e81" />
+                <!-- Glasses / Detail -->
+                <circle cx="53" cy="44" r="5" fill="#fff" />
+                <circle cx="67" cy="44" r="5" fill="#fff" />
+                <path d="M57 44 L63 44" stroke="#fff" stroke-width="2" />
+              </svg>
+            </div>
+            <div class="avatar-meta">
+              <strong class="meta-name">Abhishek Sharma</strong>
+              <span class="meta-role">Full Stack Engineer</span>
+              <span class="meta-location">📍 New Delhi, India</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-tag">About Me</span>
+          <h2 class="section-heading">Designing scalable, user-centric interfaces</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-card">
+            <h3 class="about-subtitle">Background & Philosophy</h3>
+            <p class="paragraph">
+              I am a passionate software developer dedicated to crafting fast, intuitive, and accessible digital products. 
+              My approach focuses on clean semantic markup, modular CSS architectures, and maintainable JavaScript that performs seamlessly across all devices.
+            </p>
+            <p class="paragraph">
+              Whether building interactive single-page dashboards or resilient RESTful microservices, I prioritize clean code principles, high contrast accessibility, and thoughtful user experience.
+            </p>
+          </div>
+
+          <div class="about-stats">
+            <div class="stat-box">
+              <span class="stat-val">100%</span>
+              <span class="stat-lbl">Responsive Design</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-val">W3C</span>
+              <span class="stat-lbl">Standard Compliance</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-val">&lt; 1s</span>
+              <span class="stat-lbl">Fast Load Times</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-val">Clean</span>
+              <span class="stat-lbl">Documented Code</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section section-alt" id="skills">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-tag">Technical Competencies</span>
+          <h2 class="section-heading">Tools & Technologies</h2>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Frontend -->
+          <div class="skill-category">
+            <div class="category-header">
+              <span class="cat-icon">🎨</span>
+              <h3 class="cat-title">Frontend Engineering</h3>
+            </div>
+            <ul class="chip-list">
+              <li class="chip">HTML5 & Semantic Markup</li>
+              <li class="chip">CSS3 & CSS Grid / Flexbox</li>
+              <li class="chip">JavaScript (ES6+)</li>
+              <li class="chip">React.js</li>
+              <li class="chip">Responsive UI/UX</li>
+              <li class="chip">Accessibility (WCAG)</li>
+            </ul>
+          </div>
+
+          <!-- Backend -->
+          <div class="skill-category">
+            <div class="category-header">
+              <span class="cat-icon">⚙️</span>
+              <h3 class="cat-title">Backend & APIs</h3>
+            </div>
+            <ul class="chip-list">
+              <li class="chip">Node.js</li>
+              <li class="chip">Express.js</li>
+              <li class="chip">RESTful API Design</li>
+              <li class="chip">JWT & Session Auth</li>
+              <li class="chip">MongoDB & Mongoose</li>
+              <li class="chip">Password Hashing (bcrypt)</li>
+            </ul>
+          </div>
+
+          <!-- Tools & DevOps -->
+          <div class="skill-category">
+            <div class="category-header">
+              <span class="cat-icon">🛠️</span>
+              <h3 class="cat-title">Workflow & Tooling</h3>
+            </div>
+            <ul class="chip-list">
+              <li class="chip">Git & GitHub</li>
+              <li class="chip">VS Code</li>
+              <li class="chip">Vite & npm</li>
+              <li class="chip">Postman / API Testing</li>
+              <li class="chip">Payment Gateways (Razorpay)</li>
+              <li class="chip">Chrome DevTools</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-tag">Featured Work</span>
+          <h2 class="section-heading">Recent Projects</h2>
+        </div>
+
+        <div class="project-grid">
+          <!-- Project 1 -->
+          <article class="project-card">
+            <div class="project-visual bg-gradient-1">
+              <div class="project-badge">Level 3 Full Stack</div>
+              <div class="project-mockup-tag">🍕 PizzaLab Platform</div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">PizzaLab — Full-Stack Pizza Ordering & Inventory System</h3>
+              <p class="project-desc">
+                Production-grade pizza ordering system featuring custom ingredient builder, Razorpay test payment flow, live order tracking stepper, and administrative inventory management with low-stock cron alerts.
+              </p>
+              <div class="project-tags">
+                <span>React</span>
+                <span>Node.js</span>
+                <span>Express</span>
+                <span>MongoDB</span>
+                <span>Razorpay</span>
+              </div>
+              <div class="project-actions">
+                <a href="../WebDev-L3-PizzaDelivery/client/index.html" class="btn btn-sm btn-primary">Live Demo</a>
+                <a href="https://github.com" class="btn btn-sm btn-outline" target="_blank" rel="noopener noreferrer">Source Code</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card">
+            <div class="project-visual bg-gradient-2">
+              <div class="project-badge">Level 2 Application</div>
+              <div class="project-mockup-tag">🔒 AuthVault System</div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">AuthVault — Session Authentication & Dashboard</h3>
+              <p class="project-desc">
+                Secure registration and login authentication module featuring client-side password strength validation, generic credential error protection against user enumeration, and protected dashboard views.
+              </p>
+              <div class="project-tags">
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>Vanilla JavaScript</span>
+                <span>Session Handling</span>
+              </div>
+              <div class="project-actions">
+                <a href="../WebDev-L2-LoginAuth/index.html" class="btn btn-sm btn-primary">Live Demo</a>
+                <a href="https://github.com" class="btn btn-sm btn-outline" target="_blank" rel="noopener noreferrer">Source Code</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project-card">
+            <div class="project-visual bg-gradient-3">
+              <div class="project-badge">Level 2 Productivity</div>
+              <div class="project-mockup-tag">📋 TaskFlow Pro</div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">TaskFlow Pro — Dual-State Task Management App</h3>
+              <p class="project-desc">
+                Productivity web app separating tasks into Pending and Completed lists. Features inline editing, real-time counter badges, priority tags, and durable localStorage synchronization.
+              </p>
+              <div class="project-tags">
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>LocalStorage API</span>
+                <span>CRUD Engine</span>
+              </div>
+              <div class="project-actions">
+                <a href="../WebDev-L2-ToDoApp/index.html" class="btn btn-sm btn-primary">Live Demo</a>
+                <a href="https://github.com" class="btn btn-sm btn-outline" target="_blank" rel="noopener noreferrer">Source Code</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section section-alt" id="contact">
+      <div class="container">
+        <div class="contact-wrapper">
+          <div class="contact-info">
+            <span class="section-tag">Let's Connect</span>
+            <h2 class="section-heading">Get in touch for collaborations</h2>
+            <p class="paragraph">
+              Have an internship opportunity, project inquiry, or just want to chat about web technology? Reach out directly via email or use the form.
+            </p>
+
+            <div class="info-list">
+              <div class="info-item">
+                <span class="info-icon">📧</span>
+                <div>
+                  <strong>Email</strong>
+                  <p>abhishek.sharma.dev@example.com</p>
+                </div>
+              </div>
+              <div class="info-item">
+                <span class="info-icon">💼</span>
+                <div>
+                  <strong>LinkedIn</strong>
+                  <p><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">linkedin.com/in/abhishek-sharma-dev</a></p>
+                </div>
+              </div>
+              <div class="info-item">
+                <span class="info-icon">🐙</span>
+                <div>
+                  <strong>GitHub</strong>
+                  <p><a href="https://github.com" target="_blank" rel="noopener noreferrer">github.com/abhishek-sharma-dev</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form-card">
+            <form id="contactForm" class="contact-form" novalidate>
+              <div class="form-group">
+                <label for="contactName" class="form-label">Your Name</label>
+                <input type="text" id="contactName" class="form-input" placeholder="e.g. Priya Sharma" required />
+                <span class="form-error" id="nameError">Please enter your name</span>
+              </div>
+
+              <div class="form-group">
+                <label for="contactEmail" class="form-label">Email Address</label>
+                <input type="email" id="contactEmail" class="form-input" placeholder="priya@example.com" required />
+                <span class="form-error" id="emailError">Please enter a valid email address</span>
+              </div>
+
+              <div class="form-group">
+                <label for="contactMessage" class="form-label">Your Message</label>
+                <textarea id="contactMessage" class="form-textarea" rows="4" placeholder="How can I help you?" required></textarea>
+                <span class="form-error" id="messageError">Please enter your message</span>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
+                Send Message
+              </button>
+
+              <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Abhishek Sharma. Built with semantic HTML5, CSS3, and JavaScript.</p>
+      <p class="footer-meta">Prepared as part of the Oasis Infobyte (OIBSIP) Web Development Internship.</p>
+    </div>
+  </footer>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>

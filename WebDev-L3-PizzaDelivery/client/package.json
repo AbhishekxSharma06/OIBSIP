@@ -1,0 +1,13 @@
+{
+  "name": "pizzalab-client",
+  "version": "1.0.0",
+  "description": "PizzaLab Frontend UI — Custom Pizza Builder, Razorpay Test Checkout, and Live Order Tracking",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.4.2"
+  }
+}

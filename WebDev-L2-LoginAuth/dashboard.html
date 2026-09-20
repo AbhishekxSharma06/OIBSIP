@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Protected User Dashboard - AuthVault Session Authentication System" />
+  <title>Dashboard — AuthVault | Protected Area</title>
+
+  <!-- Google Font: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="dashboard-page">
+  <div class="dashboard-container">
+    <!-- Navigation Bar -->
+    <header class="dash-navbar">
+      <div class="brand-badge">
+        <span class="lock-icon">🔒</span>
+        <span>AuthVault</span>
+      </div>
+      <div class="dash-nav-user">
+        <span class="user-greeting">Signed in as <strong id="dashNavEmail">Loading...</strong></span>
+        <button type="button" class="btn btn-secondary btn-sm" id="logoutBtn">Log Out</button>
+      </div>
+    </header>
+
+    <!-- Protected Content Area -->
+    <main class="dash-main">
+      <div class="dash-hero">
+        <div class="status-pill">
+          <span class="pulse-dot"></span>
+          Session Active &bull; Route Guard Validated
+        </div>
+        <h1 class="dash-title">Welcome to your Dashboard, <span id="dashDisplayName">User</span>!</h1>
+        <p class="dash-subtitle">
+          This view is protected by an active session guard. Direct unauthenticated access to this route is intercepted and redirected.
+        </p>
+      </div>
+
+      <!-- Account Info Cards -->
+      <div class="dash-grid">
+        <div class="dash-card">
+          <div class="card-header-tag">Profile Security</div>
+          <h2 class="card-heading">Authenticated Identity</h2>
+          <div class="card-field-row">
+            <span class="field-key">Full Name:</span>
+            <span class="field-val" id="profileName">—</span>
+          </div>
+          <div class="card-field-row">
+            <span class="field-key">Email Address:</span>
+            <span class="field-val" id="profileEmail">—</span>
+          </div>
+          <div class="card-field-row">
+            <span class="field-key">Account Role:</span>
+            <span class="badge-role">Verified Member</span>
+          </div>
+        </div>
+
+        <div class="dash-card">
+          <div class="card-header-tag">Session Telemetry</div>
+          <h2 class="card-heading">Security Metadata</h2>
+          <div class="card-field-row">
+            <span class="field-key">Session ID:</span>
+            <span class="field-val code-font" id="sessionId">—</span>
+          </div>
+          <div class="card-field-row">
+            <span class="field-key">Login Timestamp:</span>
+            <span class="field-val" id="sessionTime">—</span>
+          </div>
+          <div class="card-field-row">
+            <span class="field-key">Auth Guard:</span>
+            <span class="field-val text-success">Active & Enforced</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Test Actions Panel -->
+      <div class="dash-actions-panel">
+        <h3 class="panel-heading">Verification & Security Check</h3>
+        <p class="panel-desc">
+          Clicking "Log Out" will destroy the active session in storage and return you to the login screen. 
+          Subsequent attempts to reload this page directly will be rejected by the route guard.
+        </p>
+        <button type="button" class="btn btn-primary" id="logoutActionBtn">
+          Destroy Session & Log Out
+        </button>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="dash-footer">
+      <p>&copy; 2026 AuthVault &bull; Protected Route Guard Demo &bull; OIBSIP Level 2 Task 4</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="TaskFlow Pro - Responsive dual-list task management app with inline editing, counts, and localStorage persistence." />
+  <title>TaskFlow Pro — OIBSIP Level 2 To-Do App</title>
+
+  <!-- Google Font: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="todo-app-wrapper">
+    <!-- Header -->
+    <header class="todo-header">
+      <div class="header-top">
+        <span class="badge">OIBSIP Level 2 Task 3</span>
+        <span class="header-date" id="currentDateDisplay">Today</span>
+      </div>
+      <h1 class="todo-title">TaskFlow Pro</h1>
+      <p class="todo-subtitle">Dual-state productivity board with inline editing and persistent local storage.</p>
+    </header>
+
+    <!-- Task Input Form -->
+    <section class="task-input-section">
+      <form id="todoForm" class="todo-form" novalidate>
+        <div class="input-group">
+          <input 
+            type="text" 
+            id="taskTextInput" 
+            class="task-input" 
+            placeholder="What needs to be done today? (e.g., Finish README)" 
+            maxlength="140"
+            autocomplete="off"
+            required
+          />
+          <select id="taskPrioritySelect" class="priority-select" aria-label="Task Priority">
+            <option value="medium">Normal Priority</option>
+            <option value="high">High Priority</option>
+            <option value="low">Low Priority</option>
+          </select>
+          <button type="submit" class="btn btn-primary" id="addTaskBtn">
+            Add Task
+          </button>
+        </div>
+        <div class="input-error-msg" id="inputErrorMsg">Please enter non-empty task text.</div>
+      </form>
+    </section>
+
+    <!-- Toolbar: Search & Action -->
+    <div class="todo-toolbar">
+      <div class="search-wrap">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search tasks..." />
+      </div>
+      <div class="toolbar-actions">
+        <button type="button" class="btn-text" id="clearCompletedBtn">Clear Completed</button>
+      </div>
+    </div>
+
+    <!-- Main Lists Grid (Pending vs Completed) -->
+    <main class="lists-grid">
+      <!-- Column 1: Pending Tasks -->
+      <section class="list-column" id="pendingSection">
+        <div class="column-header">
+          <div class="column-title-wrap">
+            <span class="column-dot dot-pending"></span>
+            <h2 class="column-title">Pending Tasks</h2>
+          </div>
+          <span class="count-badge badge-pending" id="pendingCount">0</span>
+        </div>
+
+        <ul class="task-list" id="pendingTaskList" aria-label="Pending task list">
+          <!-- Dynamically populated -->
+        </ul>
+
+        <div class="empty-state" id="pendingEmptyState">
+          <div class="empty-icon">☕</div>
+          <p class="empty-title">All caught up!</p>
+          <p class="empty-subtitle">Add a task above to plan your focus for today.</p>
+        </div>
+      </section>
+
+      <!-- Column 2: Completed Tasks -->
+      <section class="list-column" id="completedSection">
+        <div class="column-header">
+          <div class="column-title-wrap">
+            <span class="column-dot dot-completed"></span>
+            <h2 class="column-title">Completed Tasks</h2>
+          </div>
+          <span class="count-badge badge-completed" id="completedCount">0</span>
+        </div>
+
+        <ul class="task-list" id="completedTaskList" aria-label="Completed task list">
+          <!-- Dynamically populated -->
+        </ul>
+
+        <div class="empty-state" id="completedEmptyState">
+          <div class="empty-icon">🎯</div>
+          <p class="empty-title">No completed tasks yet</p>
+          <p class="empty-subtitle">Complete pending items to track your accomplishments.</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="todo-footer">
+      <p>&copy; 2026 TaskFlow &bull; LocalStorage Synchronized &bull; Built with HTML5, CSS3, Vanilla JS</p>
+    </footer>
+  </div>
+
+  <!-- Inline Edit Modal / Fallback Alert -->
+  <dialog id="editDialog" class="edit-dialog">
+    <form method="dialog" id="editForm" class="edit-modal-form">
+      <h3 class="modal-title">Edit Task</h3>
+      <input type="text" id="editTaskInput" class="edit-input" required maxlength="140" />
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secondary" id="cancelEditBtn">Cancel</button>
+        <button type="submit" class="btn btn-primary" id="saveEditBtn">Save Changes</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
