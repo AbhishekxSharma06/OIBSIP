@@ -1,46 +1,49 @@
 /**
- * WebDev-L1-PersonalPortfolio: Interactive script
- * Handles mobile drawer, smooth scroll highlight spy, and accessible form validation
+ * Portfolio Interactive Scripts — Abhishek Sharma
+ * Handles smooth scroll spy, mobile drawer navigation, email clipboard helper,
+ * and contact form validation with accessible user feedback.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  'use strict';
+
   // 1. Mobile Menu Toggle
   const menuToggle = document.getElementById('menuToggle');
-  const navLinks = document.getElementById('navLinks');
+  const navMenu = document.getElementById('navMenu');
 
-  if (menuToggle && navLinks) {
+  if (menuToggle && navMenu) {
     menuToggle.addEventListener('click', () => {
-      const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-      menuToggle.setAttribute('aria-expanded', String(!isExpanded));
-      navLinks.classList.toggle('open');
+      const isOpen = navMenu.classList.contains('open');
+      navMenu.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(!isOpen));
     });
 
-    // Close menu when clicking an anchor link
-    navLinks.querySelectorAll('a').forEach(link => {
+    // Close mobile menu when any anchor link is clicked
+    navMenu.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
+        navMenu.classList.remove('open');
         menuToggle.setAttribute('aria-expanded', 'false');
       });
     });
   }
 
-  // 2. Active Navigation Scroll Spy
+  // 2. Scroll Spy Navigation Highlight
   const sections = document.querySelectorAll('section[id]');
-  const navItems = document.querySelectorAll('.nav-item');
+  const navLinks = document.querySelectorAll('.nav-link');
 
   function updateActiveNavLink() {
-    const scrollY = window.pageYOffset;
+    const scrollPosition = window.pageYOffset + 140;
 
     sections.forEach(section => {
+      const sectionTop = section.offsetTop;
       const sectionHeight = section.offsetHeight;
-      const sectionTop = section.offsetTop - 100;
       const sectionId = section.getAttribute('id');
 
-      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-        navItems.forEach(item => {
-          item.classList.remove('active');
-          if (item.getAttribute('href') === `#${sectionId}`) {
-            item.classList.add('active');
+      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${sectionId}`) {
+            link.classList.add('active');
           }
         });
       }
@@ -49,17 +52,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('scroll', updateActiveNavLink, { passive: true });
 
-  // 3. Contact Form Submission with Validation
+  // 3. Email Copy to Clipboard Feature
+  const copyEmailBtn = document.getElementById('copyEmailBtn');
+  if (copyEmailBtn) {
+    copyEmailBtn.addEventListener('click', async () => {
+      const email = 'abhishek.se06@gmail.com';
+      try {
+        await navigator.clipboard.writeText(email);
+        const originalText = copyEmailBtn.textContent;
+        copyEmailBtn.textContent = 'Copied!';
+        copyEmailBtn.style.backgroundColor = 'var(--accent-cyan)';
+        copyEmailBtn.style.color = '#000';
+
+        setTimeout(() => {
+          copyEmailBtn.textContent = originalText;
+          copyEmailBtn.style.backgroundColor = '';
+          copyEmailBtn.style.color = '';
+        }, 2000);
+      } catch (err) {
+        // Fallback for browsers with restricted clipboard permissions
+        window.location.href = `mailto:${email}`;
+      }
+    });
+  }
+
+  // 4. Contact Form Validation and Submission
   const contactForm = document.getElementById('contactForm');
-  const formStatus = document.getElementById('formStatus');
+  const formResponseAlert = document.getElementById('formResponseAlert');
 
   if (contactForm) {
     contactForm.addEventListener('submit', (event) => {
       event.preventDefault();
 
-      const nameInput = document.getElementById('contactName');
-      const emailInput = document.getElementById('contactEmail');
-      const messageInput = document.getElementById('contactMessage');
+      const nameInput = document.getElementById('userName');
+      const emailInput = document.getElementById('userEmail');
+      const subjectInput = document.getElementById('userSubject');
+      const messageInput = document.getElementById('userMessage');
 
       let isValid = true;
 
@@ -71,9 +99,9 @@ document.addEventListener('DOMContentLoaded', () => {
         nameInput.closest('.form-group').classList.remove('has-error');
       }
 
-      // Validate Email (standard regex pattern)
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(emailInput.value.trim())) {
+      // Validate Email (RFC 5322 standard check)
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(emailInput.value.trim())) {
         emailInput.closest('.form-group').classList.add('has-error');
         isValid = false;
       } else {
@@ -89,24 +117,38 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       if (isValid) {
-        // Feedback to user
-        const submitBtn = document.getElementById('submitBtn');
-        const originalText = submitBtn.textContent;
+        const submitBtn = document.getElementById('formSubmitBtn');
+        const originalBtnHtml = submitBtn.innerHTML;
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
+        submitBtn.innerHTML = '<span>Sending Message...</span>';
 
+        // Simulate seamless submission feedback
         setTimeout(() => {
           submitBtn.disabled = false;
-          submitBtn.textContent = originalText;
-          formStatus.className = 'form-status success';
-          formStatus.textContent = '✔ Thank you! Your message has been sent successfully.';
+          submitBtn.innerHTML = originalBtnHtml;
+
+          formResponseAlert.className = 'form-response-alert success';
+          formResponseAlert.textContent = `✔ Thank you, ${nameInput.value.trim()}! Your message has been prepared. Opening your email client to send...`;
+
+          // Launch mailto client with prefilled inputs
+          const subject = encodeURIComponent(subjectInput.value.trim() || 'Portfolio Contact Inquiry');
+          const body = encodeURIComponent(`Name: ${nameInput.value.trim()}\nEmail: ${emailInput.value.trim()}\n\nMessage:\n${messageInput.value.trim()}`);
+          window.location.href = `mailto:abhishek.se06@gmail.com?subject=${subject}&body=${body}`;
+
           contactForm.reset();
 
           setTimeout(() => {
-            formStatus.textContent = '';
-          }, 6000);
-        }, 700);
+            formResponseAlert.textContent = '';
+          }, 8000);
+        }, 600);
       }
+    });
+
+    // Clear error states on input focus
+    contactForm.querySelectorAll('.form-input, .form-textarea').forEach(input => {
+      input.addEventListener('input', () => {
+        input.closest('.form-group').classList.remove('has-error');
+      });
     });
   }
 });
