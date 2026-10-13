@@ -3,8 +3,7 @@
 > **Student**: Abhishek Sharma  
 > **Program**: Oasis Infobyte Internship Program (OIBSIP)  
 > **Domain**: Web Development & Designing Track  
-> **Status**: Completed Levels 1, 2, and 3 (All 8 Tasks)  
-> **Standard**: Grounded in the official OIBSIP PRD, TRD, UI/UX, and Delivery Matrix Blueprint
+> **Status**: Completed Levels 1, 2, and 3
 
 ---
 
@@ -87,7 +86,7 @@ OIBSIP/
 
 ---
 
-## 🛡️ Code Quality & Design Principles ("Written by Human")
+## 🛡️ Code Quality & Design Principles
 
 1. **Semantic HTML5 Elements**: Explicit `<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<footer>`, `<aside>`, and `<dialog>` tags used universally.
 2. **CSS Variables & Shared UI System**: Structured design tokens based on the Page 3 blueprint:
@@ -102,29 +101,6 @@ OIBSIP/
    - Level 3 API includes a built-in JSON file/memory persistence adapter that works out-of-the-box without requiring an external MongoDB server setup.
 
 ---
-
-## 📹 Video Demo & Submission Title Card Format
-
-As required by the OIBSIP Submission Guide, demo videos begin with the official 2-second static title card:
-
-```
-===================================================================
-Full Name      : Abhishek Sharma
-Assigned Track : Web Development & Designing
-Task Titles    : Level 1 (Tasks 1-3), Level 2 (Tasks 1-4), Level 3 (Task 1)
-Internship     : Oasis Infobyte Internship Program (OIBSIP)
-===================================================================
-```
-
----
-
-## 📢 LinkedIn Post Guidelines
-When posting project walkthroughs on LinkedIn:
-- Tag: **Oasis Infobyte** (`@Oasis Infobyte`)
-- Include required hashtag: `#oasisinfobyte`
-- Include public GitHub repository link and demo video attachment.
-- Templates are provided inside `WebDev-L3-PizzaDelivery/demo/README.md`.
-
 ---
 
 ## 🚀 Quick Start & Local Preview
@@ -147,8 +123,4 @@ npm start
 cd ../client
 npm install
 npm run dev
-```
-
----
-
-&copy; 2026 Abhishek Sharma &bull; Built with dedication for the Oasis Infobyte Internship Program.
+"""
